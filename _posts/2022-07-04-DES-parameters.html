@@ -1,0 +1,66 @@
+---
+layout: post
+title: "Are there Generally Optimal Parameters for Double Exponential Smoothing for 1-day Stock Price Forecasts?"
+permalink: DES-parameters
+published: false
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset = 'utf-8'>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default.js"></script>
+</head>
+
+<body>
+Short answer: Yes.
+<h3>Background: the forecasting problem</h3>
+<p>The forecasting problem occurs when you have a time-series of measurements \(y_1, \ldots, y_N\) of a stochastic variable, taken at even intervals, and you want to forecast what the next measurement \(y_{N+1}\) will be. It is impossible to predict what the next measurement will be, but a forecasting model can assign probabilities that the next measurement will be within a range of values:</p>
+
+<p style="text-align:center"><img src=/assets/img/blackbox_forecasting_model.png></p>
+
+<h3>Double Exponential Smoothing</h3>
+<p>The procedure called <a href="https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc433.htm">Double Exponential Smoothing</a>, or DES, creates a forecasting model by recursively calculating two intermediate series, a smoothed series \(S_1, \ldots, S_N\), and a trend series \(b_1, \ldots, b_N\):</p>
+
+$$ \begin{eqnarray}
+S_1 & = & y_1\\
+b_1 & = & (y_N - y_1) / (N-1) & & \text{(a somewhat arbitrary initialization)} \\
+S_n & = & \alpha y_n + (1 - \alpha)(S_{n-1} + b_{n-1}) & ; & 0 \le \alpha \le 1 \\
+b_n & = & \beta(S_n - S_{n-1}) + (1 - \beta) b_{n-1} & ; & 0 \le \beta \le 1 
+\end{eqnarray} $$
+
+which you then use to <a href="https://www.itl.nist.gov/div898/handbook/pmc/section4/pmc434.htm">forecast</a> a mean value for the next measurement:
+$$ F_{N+1} = S_N + b_N $$
+
+or to forecast a mean value for the the m-steps ahead measurement:
+
+$$ F_{N+m} = S_N + mb_N $$
+
+Assuming the forecast errors are normally distributed with a mean of \(0\), a prediction interval for the m-steps ahead forecast can be determined by the standard deviation of the residuals of the previous m-steps ahead forecasts:
+$$ \begin{eqnarray}
+\sigma_m &=& \sqrt{ \frac{1}{N-m}\sum_{n=1}^{N-m} \left(F_{n+m} - y_{n+m}\right)^2}\\
+&=& \sqrt{ \frac{1}{N-m}\sum_{n=1}^{N-m} \left(S_n + mb_n - y_{n+m}\right)^2}
+\end{eqnarray} $$
+
+<h3>The typical strategy</h3>
+<p>How do you choose values for the parameters \(\alpha\) and \(\beta\) to use for DES? The typical strategy is to try to minimize some error function of the 1-step ahead forecasts. For example, use an optimization algorithm to find values of \(\alpha\) and \(\beta\) to minimize \(\sigma_1\). Under this typical strategy, you will generate a unique \(\alpha\) and \(\beta\) for every time series you wish to forecast.</p>
+
+<h3>The problem with the typical strategy</h3>
+<p>A potential shortcoming of this typical strategy, when applied to the problem of 1-day stock price forecasts, is that it generates \(\alpha\) and \(\beta\) that are overfitted to a particular stock's price time series. This typical strategy may perform worse than the alternative strategy of finding generally optimal \(\alpha\) and \(\beta\) and using the same parameters for 1-day price forecasts for all stocks.</p>
+
+<h3>The General strategy</h3>
+To find generally optimal parameters \(\alpha\) and \(\beta\), we will use a training dataset of 5,000 daily stock quotes. We will use every combination of values of \(\alpha\) in the range \([0.000,0.002,0.004,\ldots,1.000]\) and values of \(\beta\) in the range \([0.000,0.002,0.004,\ldots,1.000]\) and choose the values of \(\alpha\) and \(\beta\) that give the best forecasting performance. The training dataset must be different from the test dataset used to evaluate the performance of the typical strategy and general strategy.
+
+<h3>Evaluating the performance of a strategy</h3>
+Using both strategies, we are going to retroactively forecast measurements for each of a dataset of 5,000 daily stock quotes. For each quote, we will use that stock's preceding data to forecast the logarithm of the daily price high and forecast the logarithm of the daily price low (since stock prices are strictly positive, it makes sense to only consider the distribution of their logarithms). Each forecast will come in the form of a mean measurement forecast \(F_{N+1}\) and standard deviation \(\sigma_1\). Then the actual measurement value \(y_{N+1}\) will land at a \(z\)-score
+$$ z = \frac{y_{N+1}-F_{N+1}}{\sigma_1} $$
+which, assuming normality, is associated with \(p\)-value:
+$$ p = \text{CDF}(z) = \frac12\left[1+\text{erf}\left(\frac{z}{\sqrt2}\right)\right]$$
+The best-performing strategy will retroactively generate a distribution of \(p\)-values that most closely resembles a uniform distribution between 0 and 1. If \(M\) forecasts are evaluated, generating \(M\) \(p\)-values, <u>sorted in ascending order</u>, then we define a score for resemblance to a uniform distribution is given by:
+$$ \text{Resemblance} = R = \sqrt{\frac1M\sum_{i=1}^M \left(p_i - \frac{i-\frac12}M\right)^2} $$
+where a smaller value indicates a better resemblance. Let's call this a <a href="https://en.wikipedia.org/wiki/P%E2%80%93P_plot">PP test</a>.
+
+<h3>Generating the training dataset and test dataset</h3>
+
+</body>

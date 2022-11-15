@@ -1,0 +1,81 @@
+---
+layout: post
+title: "What Fraction of Talent Lives in the USA?"
+permalink: usa-talent
+header-img: /assets/img/USA_IQ_threshold_graph.png
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset = 'utf-8'>
+</head>
+
+<body>
+<p>
+    The question in this post's title is motivated by the following tweet by Paul Graham (<a href="https://archive.ph/r3gwK">archived here</a>):
+</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The US has only 5% of the world&#39;s population. So if talent is equally distributed, 95% of the most talented people are born outside the US. That&#39;s why any kind of work in which ability is at a premium tends to have lots of immigrants. And tech is that kind of work.</p>&mdash; Paul Graham (@paulg) <a href="https://twitter.com/paulg/status/1552354595820539904?ref_src=twsrc%5Etfw">July 27, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>
+    When Paul Graham says talent, or "ability" to perform tech work, he means cognitive ability. Cognitive ability is what is pertinent to sitting at a computer solving coding problems and engineering problems. We don't need to act totally naive to the question at the title of this post. It's not like we must say "There is no information on the distrubution of talent. We can only guess that it is evenly distributed." We actually do have a pretty good idea of the distribution of cognitively gifted people in the world because we have good estimates for the mean IQ of populations by nation. Not only is it plausible to ask "What fraction of talent is lives in the USA", it is also straightforward to propose answer(s) to the question, depending on what your threshold for "talent" is.
+</p>
+
+<p>
+    (There is a parallel question begged by Paul Graham's tweet: what fraction of talent is <b>born in</b> the USA? I won't attempt to answer that question in this post because it's too unspecified. Born in the last 12 months? The last 10 years? Most immigrants entering the USA at this moment were born between 1970 and 2000, so that's probably the most relevant interval.)
+</p>
+
+<p>
+    Going forward in this post I'm just going to assume that the national estimates for mean IQ currated by <a href="https://viewoniq.org/">David Becker</a> are accurate <a href='#FN1' id="FL1">[1]</a>, and I'm going to add one more bold assumption that, within every nation, IQ scores are normally distributed with a standard deviation of 15 points.
+</p>
+
+<p>
+    For any possible IQ score, we can use the cummulative distribution function for the normal distribution to estimate the fraction of people in the USA who have that IQ score or higher. We can multiply that fraction by the total population of the USA to get the total number of people in the USA who have that IQ score or higher. We can then repeat this process individually for every nation, and sum the results to get the total number of people in the world who have that IQ score or higher.
+</p>
+    
+<p>
+    I'm going to highlight two cognitive thresholds: one is the IQ-104 threshold, which is the top 20% of IQ scores globally and is a <a href="https://www.unz.com/anepigone/average-iq-of-college-undergrads-and-graduate-degree-holders-by-decade/">Good estimate</a> for the current average IQ of graduate degree holders <a href='#FN2' id="FL2">[2]</a>. The other is the IQ-119 threshold, which is the top 5% of IQ scores globally and probably includes virtually all people who make inventive progress in tech. I think "top 5% of IQ scores globally" is a good working definition of "the most talented people".
+</p>
+    
+<p>
+    The whole process is so straightforward that a single <a href="https://github.com/EAweblog/EAweblog_assets/blob/main/USA_IQ_threshold.py">Python script</a> can download the data, process the data, and visualize the results:
+</p>
+
+<p style="text-align:center"><img src=/assets/img/USA_IQ_threshold_graph.png></p>
+
+<p>
+    So among the population of the USA, which is 4.5% of the global population, there lives 7.6% of the global population with an IQ over 104. More to the point of this post, among the USA population, there lives 6.7% of the global population with an IQ over 119, or in other words, 6.7% of "the most talented people", globally, live in the USA.
+</p>
+
+<p>
+    There begins to be a horseshoe theory at play around the IQ-140 mark (the top 0.2% of IQ scores globally), where Paul Graham begins to be correct, that USA has only (4.5%) of these IQ scorers and (4.5%) of the global population. On the other hand, every nation on earth will have a similar drop in its corresponding graph for high enough IQ-threshold, except the single nation with the highest mean IQ (namely, Taiwan with mean IQ 106.49).
+</p>
+
+<p>
+    So 6.7% of "the most talented people" is a lot less then I expected for the USA. When I first read Paul Graham's tweet, I did a really crude back-of-the-envelope calculation and came up with this tweet (<a href="https://archive.ph/wip/em1KM">archived here</a>):
+</p>
+<p>
+    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Depends on your threshold for talent.<br>If &quot;talent&quot; is &quot;IQ over 115&quot; then 16% of talent is born in the USA+Canada.<br>My definition is &quot;talent&quot; is &quot;IQ over 130&quot; implying 29% of &quot;talent&quot; is born in USA+Canada. <a href="https://t.co/ZviwqjYPej">https://t.co/ZviwqjYPej</a></p>&mdash; Eternal Anglo ☮️ (@EAweblog) <a href="https://twitter.com/EAweblog/status/1553018346010034178?ref_src=twsrc%5Etfw">July 29, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+
+<p>
+    Which I immediately regretted after thinking about it for 5 minutes. If Europe plus North America plus China is over 2 billion people, and the USA is 1/6 of that, how could the USA possibly be over 1/6 (16.7%) of any IQ threshold? Frankly, embarassing. In my defense I had just woken up and wrote that tweet in my pajamas. For the amount of thought that Paul Graham put in his tweet, he probably wrote it in his pajamas too. Nothing against Paul Graham, he is admirable and brilliant and his tweet provoked an interesting question.
+</p>
+<p>
+    And the main reason the USA's fraction of "the most talented people" is a mediocre 6.7%, despite having a mean IQ of 97, much higher than the global mean IQ of 87 points, is because China's mean IQ is so damn high at 104 points. We have good reason to believe that, despite being 18% of the global population, Chinese nationals account for the majority of "the most talented people" (they are probably 58% of the global top 5% of IQ scores). This does not come as a surprise to anyone who has thought to Google Image search <a href="https://www.google.com/search?q=usa+imo+team&hl=en&tbm=isch">"USA IMO team"</a>.
+</p>
+
+<p style="text-align:center"><img src=/assets/img/China_IQ_threshold_graph.png></p>
+
+<h2>Notes</h2>
+<ol>
+    <li>
+        <a href='#FL1' id="FN1">^</a> David Becker's dataset at <a href="https://viewoniq.org/">https://viewoniq.org/</a> is now the standard dataset for national mean IQ scores, accumulating decades worth of tabulation led by Richard Lynn. An older version of the dataset was used by John Walker in 2004 to create an <a href="https://www.fourmilab.ch/documents/IQ/1950-2050/">infographic</a> about a possible future for global average IQ.
+        </br>I seem to remember that Jelte Wicherts had a competing dataset of national IQ scores with higher scores in African countries, but I have no idea where to find Wicherts' data.
+    </li>
+    <li>
+        <a href='#FL2' id="FN2">^</a> via <a href="https://www.unz.com/anepigone/average-iq-of-college-undergrads-and-graduate-degree-holders-by-decade/">Audacious Epigone</a>. GSS wordsum scores are a lossy substitute for IQ scores, so 104 should be considered a lower bound to the average IQ of graduate degree holders.
+    </li>
+</ol>
+
+</body>
