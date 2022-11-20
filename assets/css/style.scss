@@ -1,7 +1,7 @@
 ---
 ---
 
-@import "minima";
+@import "{{ site.theme }}";
 
 .wrapper {
   max-width: 1280px;
