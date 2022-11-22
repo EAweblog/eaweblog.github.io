@@ -28,7 +28,7 @@ aside{
 }
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   #sidebar {
     width: 100%;
     height: auto;
@@ -38,4 +38,16 @@ aside{
     width: 100%;
   }
   #sidebar a {float: left;}
+  .footer-col-1, .footer-col-2 { width: -webkit-calc(45% - (30px / 2)); width: calc(45% - (30px / 2)); }
+  .footer-col-3 { width: -webkit-calc(85% - (30px / 2)); width: calc(85% - (30px / 2)); }
 }
+
+@media screen and (max-width: 600px) {
+  .footer-col {
+    float: left;
+    margin-bottom: 0;
+    width: -webkit-calc(100% - (30px / 2));
+    width: calc(100% - (30px / 2));
+  }
+}
+
