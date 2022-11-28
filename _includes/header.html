@@ -3,8 +3,11 @@
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <div class="footer-col footer-col-1">
-      <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <div class="footer-col footer-col-1" id="site-title">
+      <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
+        <img src="/android-chrome-192x192.png" id="watermark">
+        <div id="title-text">{{ site.title | escape }}</div>
+      </a>
     </div>
     <div class="footer-col footer-col-2" style="margin: 15px 0px 0px 0px">
       {%- include social.html -%}

@@ -51,3 +51,20 @@ aside{
   }
 }
 
+#site-title {
+  height: 60px;
+}
+#title-text {
+  position: absolute;
+  z-index: 1;
+  font-weight: bold;
+  margin-top: 5px;
+}
+#watermark {
+  position: absolute;
+  z-index: 0;
+  opacity: 40%;
+  border-radius: 50%;
+  width: 70px;
+  margin-left: 83px;
+}
