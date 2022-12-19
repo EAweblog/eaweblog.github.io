@@ -41,7 +41,7 @@ header-img: /assets/img/Meiosis_Overview_new.svg.png
     $$ \left(1-\left(\frac12\right)^{N-1}\right)\left(1 - \frac{N+2}{2^N} + \frac{1}{2^{2N-1}}\right)^{22}.$$
 
     <h2>Probability of genome replication for females</h2>
-    The female's XX chromosomes behave like autosomes during meiosis, where each gamete has a roughly \(\frac12\) probability of receiving a copy homolog and a \(\frac12\) probability of receiving a homolog pair crossover. So the probability that her full genome was replicated into \(N\) children is given by the probability that each of 23 autosomes were replicated into \(N\) children:
+    The female's XX chromosomes behave like autosomes during meiosis, where each gamete has a roughly \(\frac12\) probability of receiving a copy homolog and a \(\frac12\) probability of receiving a homologous pair crossover. So the probability that her full genome was replicated into \(N\) children is given by the probability that each of 23 autosomes were replicated into \(N\) children:
     $$ \left(1 - \frac{N+2}{2^N} + \frac{1}{2^{2N-1}}\right)^{23}. $$
 
     <h2>Results</h2>
@@ -117,7 +117,7 @@ header-img: /assets/img/Meiosis_Overview_new.svg.png
     <p>When \(n \gt 0\), the total probability that the \(M\) homolog is <b>not</b> replicated is given by:
         $$ \sum_{i=0}^{n} p(i)q(i) = \frac2{2^{n}} + \sum_{i=1}^{n-1} p(i)q(i) = \frac2{2^{n}} + \sum_{i=1}^{n-1}\frac1{2^{n}} = \frac{n+1}{2^n} = \frac{N-j+1}{2^{N-j}}.$$
     (<em>Note:</em> The probability that the \(M\) homolog is <b>not</b> replicated is \(1\) when \(n=0\). Coincidentally, the formula already accounts for this.)</p>
-    <p>Together, and when \(j \ne N\), the probability that \(j\) children received a copy of the \(P\) homolog, \(0\) children received a copy of the \(M\) homolog, and the \(M\) homolog was <b>not</b> replicated by the crossovers is given by the following:
+    <p>Together, the probability that \(j\) children received a copy of the \(P\) homolog, \(0\) children received a copy of the \(M\) homolog, and the \(M\) homolog was <b>not</b> replicated by the crossovers is given by the following:
     $$ {N \choose j}\left(\frac12\right)^{N+j} \left(\frac{N-j+1}{2^{N-j}}\right)\\
     ={N \choose j} \frac{N-j+1}{2^{2N}}.$$</p>
     <p>Summing over possible values of \(j\) (see <a href=https://mathworld.wolfram.com/BinomialSums.html>https://mathworld.wolfram.com/BinomialSums.html</a> for formulae on weighted binomial sums), we have the total probability that at least \(1\) child received a copy of the \(P\) homolog, and \(0\) children received a copy of the \(M\) homolog, and the \(M\) homolog was <b>not</b> replicated by crossovers:
