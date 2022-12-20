@@ -22,9 +22,9 @@ layout: default
             <td style="border: 0; padding-top: 0px; padding-bottom: 0px;">
               {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
               <span class="post-meta">{{ post.date | date: date_format }}</span>
-              <h3>
+              <h5 style="color: black;">
                   {{ post.title | escape }}  
-              </h3>
+              </h5>
             </td>
           </table>
         </a>

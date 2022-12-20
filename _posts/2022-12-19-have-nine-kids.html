@@ -72,7 +72,7 @@ header-img: /assets/img/Meiosis_Overview_new.svg.png
             $$ {N \choose j} \left(\frac14\right)^0 \left(\frac14\right)^j \left(\frac24\right)^{N-j}\\
             = {N \choose j} \left(\frac12\right)^{N+j}.$$
         </li>
-        <li><b>Possibility 3</b>: None of your children received a copy of the \( P \) homolog, but at least one child received a copy of the \( M \) homolog. As above, this occurs with probability:
+        <li><b>Possibility 3</b>: None of your children received a copy of the \( P \) homolog, but \(j \gt 0\) children received a copy of the \( M \) homolog. As above, this occurs with probability:
             $$ {N \choose j} \left(\frac12\right)^{N+j}.$$
         </li>
         <li><b>Possibility 4</b>: At least one child received a copy of the \( P \) homolog and at least one child received a copy of the \( M \) homolog. Then the probability that the autosome pair was <b>not</b> replicated into your children is \(0\), so we can ignore this case.
@@ -116,7 +116,7 @@ header-img: /assets/img/Meiosis_Overview_new.svg.png
     $$</p>
     <p>When \(n \gt 0\), the total probability that the \(M\) homolog is <b>not</b> replicated is given by:
         $$ \sum_{i=0}^{n} p(i)q(i) = \frac2{2^{n}} + \sum_{i=1}^{n-1} p(i)q(i) = \frac2{2^{n}} + \sum_{i=1}^{n-1}\frac1{2^{n}} = \frac{n+1}{2^n} = \frac{N-j+1}{2^{N-j}}.$$
-    (<em>Note:</em> The probability that the \(M\) homolog is <b>not</b> replicated is \(1\) when \(n=0\). Coincidentally, the formula already accounts for this.)</p>
+    (<em>Note:</em> The probability that the \(M\) homolog is <b>not</b> replicated is \(1\) when \(n=0\). Coincidentally, the formula also accounts for this.)</p>
     <p>Together, the probability that \(j\) children received a copy of the \(P\) homolog, \(0\) children received a copy of the \(M\) homolog, and the \(M\) homolog was <b>not</b> replicated by the crossovers is given by the following:
     $$ {N \choose j}\left(\frac12\right)^{N+j} \left(\frac{N-j+1}{2^{N-j}}\right)\\
     ={N \choose j} \frac{N-j+1}{2^{2N}}.$$</p>
