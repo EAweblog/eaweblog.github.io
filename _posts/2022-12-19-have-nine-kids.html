@@ -85,52 +85,32 @@ header-img: /assets/img/Meiosis_Overview_new.svg.png
     </em></p>
     <p>Similarly, here is the criteria for which the full \(M\) homolog will <b>not</b> be replicated among your children:</p>
     <p><em>If all the crossover sites for \(M\)-\(P\) crossovers occur higher along the length of the chromosome than all the crossover sites for \(P\)-\(M\) crossovers, then the full \(M\) homolog will not be replicated.</em></p>
-    <p>Let \(p(i)\) be the probability that there are \(i\) number of \(P\)-\(M\) crossovers, where \(0 \le i \le N\). Then we have:
-    $$ p(i) = \frac{N \choose i}{2^N}.$$</p>
-    <p>The criteria above are simple ordering problems. There are \(N!\) orderings of the crossover sites, each of which is equally likely. There are \((i)!(N-i)!\) orderings in which all the \(P\)-\(M\) crossovers are higher than all the \(M\)-\(P\) crossovers. There are \((N-i)!(i)!\) orderings in which all the \(M\)-\(P\) crossovers are highter than all the \(P\)-\(M\) crossovers.</br>
-    Let \(q(i)\) be the probability that either homolog is <b>not</b> replicated, given there are \(i\) number of \(P\)-\(M\) crossovers, and hence \(N-i\) number of \(M\)-\(P\) crossovers. When \(i=0\) or \(i=N\), then \(q(i)=1\). When \(0 \lt i \lt N\), then \(q(i)\) is given by the probability that either criterion above is not met. Hence we have:
-    $$ q(i) = \left\{
-        \begin{array}{l}
-        1 & \text{when} & i=0 \text{ or } i=N,\\
-        \frac{2(i!)(N-i)!}{N!} = \frac2{N \choose i} & \text{when} & 0 \lt i \lt N
-        \end{array}
-        \right.
-    $$</p>
-    When \(N \gt 0\), the total probability that at least one homolog is <b>not</b> replicated is given by:
-    $$ \sum_{i=0}^N p(i)q(i) = \frac2{2^N} + \sum_{i=1}^{N-1} p(i)q(i) = \frac2{2^N} + \sum_{i=1}^{N-1}\frac2{2^N} = \frac{N}{2^{N-1}}.$$</p>
-    <p>Together, the probability that none of your children received a copy homolog and that at least one homolog is <b>not</b> replicated by the crossovers is given by:
+    <p>The ordering of crossover sites along the length of a chromosome can be represented by an \(N\)-length sequence of \(p\)s and \(m\)s, where \(p\) represents a \(P\)-\(M\) crossover and \(m\) represents an \(M\)-\(P\) crossover. There are \(2^N\) possible sequences and they are all equally likely.</p>
+    <p>Sequences that are \(i>0\) number of \(m\)s followed by \(N-i\) number of \(p\)s fulfill the first criteria. There are \(N\) such sequences. Sequences that are \(i>0\) number of \(p\)s followed by \(N-i\) number of \(m\)s fulfill the second criteria. There are \(N\) such sequences. In total there are \(2N\) sequences in which at least one homolog will not be replicated, out of \(2^N\) equally likely sequences, so the probability that at least one homolog is <b>not</b> replicated is given by:
+        $$ \frac{2N}{2^N} = \frac{N}{2^{N-1}}. $$</p>
+    <p>Together, the probability that none of your children received a copy homolog <b>and</b> that at least one homolog is <b>not</b> replicated by the crossovers is given by:
         $$\left(\frac12\right)^N\left(\frac{N}{2^{N-1}}\right) = \frac{N}{2^{2N-1}}.$$
     </p>
     <h2>Possibility 2</h2>
     <p>Suppose \(j \gt 0\) children received a copy of the \(P\) homolog and \(0\) children received a copy of the \(M\) homolog. Let \(n\) be equal to \(N-j\). Then the following describes the criteria for which the full \(M\) homolog will <b>not</b> be replicated among your children:</p>
     <p><em>If all the crossover sites for \(M\)-\(P\) crossovers occur higher along the length of the chromosome than all the crossover sites for \(P\)-\(M\) crossovers, then the full \(M\) homolog will not be replicated.</em></p>
-    <p>Let \(p(i)\) be the probability that there are \(i\) number of \(P\)-\(M\) crossovers, where \(0 \le i \le n\). Then we have:
-        $$ p(i) = \frac{n \choose i}{2^{n}}.$$
-    Let \(q(i)\) be the probability that the \(M\) homolog is <b>not</b> replicated, given there are \(i\) number of \(P\)-\(M\) crossovers, and hence \(n-i\) number of \(M\)-\(P\) crossovers. When \(i=0\) or \(i=n\), then \(q(i)=1\). When \(0 \lt i \lt n\), then \(q(i)\) is given by the probability that the criterion above is not met. Hence we have:
-    $$ q(i) = \left\{
-        \begin{array}{l}
-        1 & \text{when} & i=0 \text{ or } i=n,\\
-        \frac{(i!)(n-i)!}{(n)!} = \frac1{n \choose i} & \text{when} & 0 \lt i \lt n
-        \end{array}
-        \right.
-    $$</p>
-    <p>When \(n \gt 0\), the total probability that the \(M\) homolog is <b>not</b> replicated is given by:
-        $$ \sum_{i=0}^{n} p(i)q(i) = \frac2{2^{n}} + \sum_{i=1}^{n-1} p(i)q(i) = \frac2{2^{n}} + \sum_{i=1}^{n-1}\frac1{2^{n}} = \frac{n+1}{2^n} = \frac{N-j+1}{2^{N-j}}.$$
-    (<em>Note:</em> The probability that the \(M\) homolog is <b>not</b> replicated is \(1\) when \(n=0\). Coincidentally, the formula also accounts for this.)</p>
+    <p>The ordering of crossover sites along the length of a chromosome can be represented by an \(n\)-length sequence of \(p\)s and \(m\)s, where \(p\) represents a \(P\)-\(M\) crossover and \(m\) represents an \(M\)-\(P\) crossover. There are \(2^n\) possible sequences and they are all equally likely.</p>
+    <p>Sequences that are \(i \ge 0\) number of \(p\)s followed by \(n-i\) number of \(m\)s fulfill the criteria. There are \(n+1\) such sequences, out of \(2^n\) equally likely sequences, so the probability that the \(M\) homolog is <b>not</b> replicated is given by:
+        $$ \frac{n+1}{2^n} = \frac{N-j+1}{2^{N-j}}. $$</p>
     <p>Together, the probability that \(j\) children received a copy of the \(P\) homolog, \(0\) children received a copy of the \(M\) homolog, and the \(M\) homolog was <b>not</b> replicated by the crossovers is given by the following:
     $$ {N \choose j}\left(\frac12\right)^{N+j} \left(\frac{N-j+1}{2^{N-j}}\right)\\
     ={N \choose j} \frac{N-j+1}{2^{2N}}.$$</p>
-    <p>Summing over possible values of \(j\) (see <a href=https://mathworld.wolfram.com/BinomialSums.html>https://mathworld.wolfram.com/BinomialSums.html</a> for formulae on weighted binomial sums), we have the total probability that at least \(1\) child received a copy of the \(P\) homolog, and \(0\) children received a copy of the \(M\) homolog, and the \(M\) homolog was <b>not</b> replicated by crossovers:
+    <p>Summing over possible values of \(j\) (see <a href=https://mathworld.wolfram.com/BinomialSums.html>https://mathworld.wolfram.com/BinomialSums.html</a> for formulae on weighted binomial sums), we have the total probability that at least \(1\) child received a copy of the \(P\) homolog, and \(0\) children received a copy of the \(M\) homolog, <b>and</b> the \(M\) homolog was <b>not</b> replicated by crossovers:
     $$ \sum_{j=1}^N {N \choose j} \frac{N-j+1}{2^{2N}}\\
        = \frac1{2^{2N}}\left[\left(N+1\right)\sum_{j=1}^N {N \choose j} - \sum_{j=1}^N j {N \choose j} \right]\\
        = \frac1{2^{2N}}\left[\left(N+1\right)\left(2^N-1\right) - N2^{N-1}\right]\\
        = \frac{N+2}{2^{N+1}} - \frac{N+1}{2^{2N}}.$$
     </p>
     <h2>Possibility 3</h2>
-    <p>As above, the probability that at least \(1\) child received a copy of the \(M\) homolog, and \(0\) children received a copy of the \(P\) homolog, and the \(P\) homolog was <b>not</b> replicated by crossovers is given by:
+    <p>As above, the probability that at least \(1\) child received a copy of the \(M\) homolog, <b>and</b> \(0\) children received a copy of the \(P\) homolog, and the \(P\) homolog was <b>not</b> replicated by crossovers is given by:
     $$\frac{N+2}{2^{N+1}} - \frac{N+1}{2^{2N}}.$$</p>
     <h2>Possibility 4</h2>
-    The probability that at least one child received a copy of the \(P\) homolog, at least one child received a copy of the \(M\) homolog, and either homolog is <b>not</b> replicated is \(0\).
+    The probability that at least one child received a copy of the \(P\) homolog, at least one child received a copy of the \(M\) homolog, <b>and</b> either homolog is <b>not</b> replicated is \(0\).
     <h2>Combining Possibilities 1-4</h2>
     <p>If \(N \gt 0\), the probability that autosome pair \(A\) was <b>not</b> replicated into \(N\) children is given by:
         $$ \frac{N}{2^{2N-1}} + 2\left[\frac{N+2}{2^{N+1}} - \frac{N+1}{2^{2N}}\right] \\
