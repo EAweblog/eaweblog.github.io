@@ -41,8 +41,6 @@ function myformat(r) {
 
 var path = d3.geoPath();
 
-var hoverPathWidth = 2;
-
 function getParentSVG(thiz) {
   while (thiz.tagName != "svg") {
     thiz = thiz.parentNode;
@@ -84,7 +82,7 @@ function zoomed() {
     .attr("transform", d3.event.transform)
     .attr("stroke-width", 1/d3.event.transform.k);
   hoverPath = svg.select(".hoverPath")
-  hoverPath.attr("stroke-width", hoverPathWidth/d3.event.transform.k);
+  hoverPath.attr("stroke-width", fertChoro.hoverPathWidth/d3.event.transform.k);
 };
 
 function fertChoro(selector) { // fertility choropleth

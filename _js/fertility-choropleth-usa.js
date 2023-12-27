@@ -95,15 +95,9 @@ d3.queue()
         });
       });
     }
-    //var myqueue = d3.queue();
-    //getData(years[0]);
-    //myqueue.await(draw_svg);
-    //var myqueue = d3.queue();
-    //years.slice(1).forEach(year => getData(year));
     var myqueue = d3.queue();
     years.forEach(year => getData(year));
     myqueue.await(draw_svg);
-
   } ) ;
 
 function draw_svg(error) {

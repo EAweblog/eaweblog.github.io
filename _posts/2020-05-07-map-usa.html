@@ -11,6 +11,8 @@ header-img: /assets/img/map-usa-preview.png
 <head>
 <meta charset = 'utf-8'>
 <link rel="stylesheet" type="text/css" href="/_css/choropleth.css">
+<link rel="stylesheet" type="text/css" href="/_css/tooltip.css">
+<div id="tooltip"></div>
 </head>
 
 <body>
@@ -22,7 +24,7 @@ header-img: /assets/img/map-usa-preview.png
 <div id="widget-usa">
   <svg class="choropleth" id="choropleth-usa" viewBox="0 0 1060 500"> </svg>
 </div>
-<div id="tooltip"></div>
+
 </body>
 
 {%- include d3-includes.html -%}

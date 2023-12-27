@@ -11,6 +11,8 @@ header-img: /assets/img/map-nz-preview.png
 <head>
 <meta charset = 'utf-8'>
 <link rel="stylesheet" type="text/css" href="/_css/choropleth.css">
+<link rel="stylesheet" type="text/css" href="/_css/tooltip.css">
+<div id="tooltip"></div>
 </head>
 
 <body>
@@ -19,7 +21,6 @@ header-img: /assets/img/map-nz-preview.png
 <div id="widget-nz">
   <svg class="choropleth" id="choropleth-nz" viewBox="0 0 960 600"> </svg>
 </div>
-<div id="tooltip"></div>
 </body>
 
 {%- include d3-includes.html -%}
