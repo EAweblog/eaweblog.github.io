@@ -1,5 +1,5 @@
 Promise.all([
-  d3.json("/_data/world-atlas/countries-110m.json"),
+  d3.json("/_data/world-atlas/countries-" + localResolution + ".json"),
   d3.tsv("/_data/world-atlas/mIQ.tsv"),
 ]).then(function([world, mIQ]) {
   var IQ_threshold = 11.7;
@@ -127,7 +127,7 @@ Promise.all([
     hoverPath.attr("stroke-width", 2/event.transform.k);
   };
   var zoom = d3.zoom()
-    .scaleExtent([1, 8])
+    .scaleExtent([1, maxScaleExtent])
     .translateExtent([[0,0],[width,height]])
     .extent([[0,0],[width,height]])
     .on("zoom", zoomed);
