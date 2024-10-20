@@ -1,0 +1,44 @@
+---
+layout: post
+title: "The Marginal Immigrant, Part 2"
+permalink: the-marginal-immigrant-part-2
+description: "An immigrant with a given IQ score enters the country. What is the effect on national productivity?"
+header-img: /assets/img/world-atlas-source-immigration.png
+---
+
+<script>
+    var localResolution = "110m";
+    var maxScaleExtent = 8;
+    var local_mIQ_version = "2";
+    var IQ_threshold = 9.0;
+    var IQ_varname = "NIQ";
+</script>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset = 'utf-8'>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default.js"></script>
+    <link rel="stylesheet" type="text/css" href="/_css/tooltip.css">
+    <div id="tooltip"></div>
+    <style>h3 {margin: 15px 0 0 0}</style>
+    </head>
+    
+    <p style="text-align: center;">
+    <svg id="world-map-svg"></svg>
+    <em>
+    Mousewheel or pinch to zoom.
+    <br>The selected country should reject immigrants from the <b>orange</b> countries.
+    <br>The selected country should accept immigrants from the <b>white</b> and <b>blue</b> countries.
+    <br>The <b>blue</b> countries should reject immigrants from the selected country.
+    </em>
+    </p>
+    
+    <body>
+      
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="/_js/world-IQ-groups.js"></script>
+
+</html>

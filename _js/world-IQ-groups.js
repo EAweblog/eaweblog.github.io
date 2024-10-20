@@ -1,10 +1,9 @@
 Promise.all([
   d3.json("/_data/world-atlas/countries-" + localResolution + ".json"),
-  d3.tsv("/_data/world-atlas/mIQ.tsv"),
+  d3.tsv("/_data/world-atlas/mIQ-" + local_mIQ_version + ".tsv"),
 ]).then(function([world, mIQ]) {
-  var IQ_threshold = 11.7;
   var mIQ_map = {};
-  mIQ.forEach(d => mIQ_map[d.ISO_A3] = parseFloat(d['QNW+SAS+GEO']));
+  mIQ.forEach(d => mIQ_map[d.ISO_A3] = parseFloat(d[IQ_varname]));
 
   countries = topojson.feature(world, world.objects.countries);
   countrymesh = topojson.mesh(world, world.objects.countries); //, (a, b) => a !== b)
